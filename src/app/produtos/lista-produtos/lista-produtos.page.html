@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+    	<ion-item *ngFor="let p of produtos" routerLink="/detalhe-produto/{{p._id}}">
+      		<!-- <ion-icon [name]="item.icon" slot="start"></ion-icon> -->
+      			{{p.nome}}
+      		<div class="item-note" slot="end">
+        		{{p.preco || currency}}
+      		</div>
+    	</ion-item>
+  	</ion-list>
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button routerLink="/novo-produto">
+			Novo
+		</ion-fab-button>
+	</ion-fab>
+</ion-content>
