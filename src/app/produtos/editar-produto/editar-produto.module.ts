@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetalheProdutoPage } from './detalhe-produto.page';
+import { EditarProdutoPage } from './editar-produto.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DetalheProdutoPage
+    component: EditarProdutoPage
   }
 ];
 
@@ -20,8 +20,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetalheProdutoPage]
+  declarations: [EditarProdutoPage]
 })
-export class DetalheProdutoPageModule {}
+export class EditarProdutoPageModule {}

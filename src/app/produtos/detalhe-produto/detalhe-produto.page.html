@@ -23,8 +23,9 @@
 	        	<p>Descrição:</p>
 	        	<p>{{produto.descricao}}</p>
 	      	</ion-item>
-	      	<ion-button type="button" shape="round" color="primary" expand="block" href="editar-produto/{{produto._id}}">Editar</ion-button>
+	      	<ion-button type="button" shape="round" color="primary" expand="block" routerLink="/editar-produto/{{produto._id}}">Editar</ion-button>
 	      	<ion-button type="button" shape="round" color="danger" expand="block" (click)="delete(produto._id)">Deletar</ion-button>
+	      	<ion-button type="button" shape="round" color="medium" expand="block" routerLink="/lista-produtos">Voltar</ion-button>
 	    </ion-card-content>
 	 </ion-card>
 </ion-content>

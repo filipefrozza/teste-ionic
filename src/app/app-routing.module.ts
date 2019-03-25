@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'lista-produtos', loadChildren: './produtos/lista-produtos/lista-produtos.module#ListaProdutosPageModule' },
   { path: 'novo-produto', loadChildren: './produtos/novo-produto/novo-produto.module#NovoProdutoPageModule' },
   { path: 'detalhe-produto/:id', loadChildren: './produtos/detalhe-produto/detalhe-produto.module#DetalheProdutoPageModule' },
+  { path: 'editar-produto/:id', loadChildren: './produtos/editar-produto/editar-produto.module#EditarProdutoPageModule' },
 ];
 
 @NgModule({

@@ -26,50 +26,63 @@ export class DetalheProdutoPage implements OnInit {
 
   	async getProduto() {
 	    if(this.route.snapshot.paramMap.get('id') == 'null') {
-	      this.presentAlertConfirm('Você não escolheu um item na lista');
+	      	this.presentAlertConfirm('Você não escolheu um item na lista', null);
 	    } else {
-	      const loading = await this.loadingController.create({
-	        message: 'Loading...'
-	      });
-	      await loading.present();
-	      console.log(this.route.snapshot.params);
-	      await this.api.getProduto(this.route.snapshot.params['id'])
-	        .subscribe(res => {
-	          console.log(res);
-	          this.produto = res;
-	          loading.dismiss();
+	      	const loading = await this.loadingController.create({
+	        	message: 'Loading...'
+	      	});
+	      	await loading.present();
+	      	console.log(this.route.snapshot.params);
+	      	await this.api.getProduto(this.route.snapshot.params['id']).subscribe(res => {
+	          	console.log(res);
+	          	this.produto = res;
+	          	loading.dismiss();
 	        }, err => {
-	          console.log(err);
-	          loading.dismiss();
+	          	console.log(err);
+	          	loading.dismiss();
 	        });
 	    }
   	}
 
   	async delete(id) {
-  		console.log(id);
-	    const loading = await this.loadingController.create({
-	      message: 'Loading...'
-	    });
-	    await loading.present();
-	    await this.api.deleteProduto(id).subscribe(res => {
-	        loading.dismiss();
-	        this.router.navigate([ '/tabs' ]);
-	    }, err => {
-	        console.log(err);
-	        loading.dismiss();
+  		this.presentAlertConfirm('Tem certeza que deseja remover '+this.produto.nome+'?',async () => {
+	  		console.log(id);
+		    const loading = await this.loadingController.create({
+		      	message: 'Loading...'
+		    });
+		    await loading.present();
+		    await this.api.deleteProduto(id).subscribe(res => {
+		        loading.dismiss();
+		        this.router.navigate([ '/lista-produtos' ]);
+		    }, err => {
+		        console.log(err);
+		        loading.dismiss();
+		    });
 	    });
   	}
 
-  	async presentAlertConfirm(msg: string) {
+  	async presentAlertConfirm(msg: string, func: any) {
+  		if(func){
+  			var handler = func;
+  		}else{
+  			var handler: any = function(){
+  				this.router.navigate(['']);
+  			}
+  		}
+
 	    const alert = await this.alertController.create({
 	      	header: 'Warning!',
 	      	message: msg,
 	      	buttons: [
 		        {
-		          text: 'Okay',
-		          handler: () => {
-		            this.router.navigate(['']);
-		          }
+		          	text: 'Aceitar',
+		          	handler
+		        },
+		        {
+		        	text: 'Cancelar',
+		        	handler: () => {
+
+		        	}
 		        }
 	      	]
 	    });

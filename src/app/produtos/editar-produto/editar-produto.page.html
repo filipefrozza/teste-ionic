@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Novo Produto</ion-title>
+    <ion-title>Editar Produto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-	<form [formGroup]="produtoForm" (ngSubmit)="cadastrar(produtoForm.value)">
+	<form [formGroup]="produtoForm" (ngSubmit)="editar(produtoForm.value)">
 		<ion-item>
 			<ion-label position="floating">Nome</ion-label>
 			<ion-input type="text" formControlName="nome"></ion-input>
@@ -22,7 +22,7 @@
 			<ion-label position="floating">Descricao</ion-label>
 			<ion-textarea type="text" formControlName="descricao"></ion-textarea>
 		</ion-item>
-		<ion-button type="submit" shape="round" color="primary" expand="block" [disabled]="!produtoForm.valid">Cadastrar</ion-button>
+		<ion-button type="submit" shape="round" color="primary" expand="block" [disabled]="!produtoForm.valid">Salvar</ion-button>
 		<ion-button type="button" shape="round" color="danger" expand="block" routerLink="/lista-produtos">Cancelar</ion-button>
 	</form>
 </ion-content>
