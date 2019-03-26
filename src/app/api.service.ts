@@ -8,7 +8,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 };
 
-const apiUrl = "http://localhost:3000/api/v1";
+const apiUrl = "http://10.0.0.229:3000/api/v1";
 
 @Injectable({
   providedIn: 'root'
