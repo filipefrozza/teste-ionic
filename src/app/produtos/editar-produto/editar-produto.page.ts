@@ -46,7 +46,7 @@ export class EditarProdutoPage implements OnInit {
         	message: 'Loading...'
       	});
     		await loading.present();
-    		await this.api.getProduto(id).subscribe(data => {
+    		await this.api.get('produtos', id).subscribe(data => {
         		this._id = data._id;
         		this.produtoForm.setValue({
           		nome: data.nome,
@@ -64,7 +64,7 @@ export class EditarProdutoPage implements OnInit {
 
   	async editar(form:NgForm) {
       this.presentAlertConfirm('Tem certeza que deseja salvar?',async () => {
-    	  await this.api.updateProduto(this._id, form).subscribe(res => {
+    	  await this.api.update('produtos', this._id, form).subscribe(res => {
           let id = res['_id'];
           this.router.navigate([ `/detalhe-produto/${id}`], { relativeTo: this.route.parent });
         }, (err) => {

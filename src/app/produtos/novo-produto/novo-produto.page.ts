@@ -40,7 +40,7 @@ export class NovoProdutoPage implements OnInit {
 	      	message: 'Loading...'
 	    });
 	    await loading.present();
-	    await this.api.addProduto(form).subscribe(res => {
+	    await this.api.add('produtos', form).subscribe(res => {
 	        let id = res['_id'];
 	        loading.dismiss();
 	        console.log("addProduto",res);

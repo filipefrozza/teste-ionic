@@ -34,7 +34,7 @@ export class ListaProdutosPage implements OnInit {
 	    });
 	    await loading.present();
 		try{
-		    await this.api.getProdutos().subscribe(res => {
+		    await this.api.getAll('produtos').subscribe(res => {
 		        this.produtos = res;
 		        console.log(this.produtos);
 		        loading.dismiss();

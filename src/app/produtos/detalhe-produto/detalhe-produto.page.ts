@@ -33,7 +33,7 @@ export class DetalheProdutoPage implements OnInit {
 	      	});
 	      	await loading.present();
 	      	console.log(this.route.snapshot.params);
-	      	await this.api.getProduto(this.route.snapshot.params['id']).subscribe(res => {
+	      	await this.api.get('produtos',this.route.snapshot.params['id']).subscribe(res => {
 	          	console.log(res);
 	          	this.produto = res;
 	          	loading.dismiss();
@@ -51,7 +51,7 @@ export class DetalheProdutoPage implements OnInit {
 		      	message: 'Loading...'
 		    });
 		    await loading.present();
-		    await this.api.deleteProduto(id).subscribe(res => {
+		    await this.api.delete('produtos', id).subscribe(res => {
 		        loading.dismiss();
 		        this.router.navigate([ '/lista-produtos' ]);
 		    }, err => {
